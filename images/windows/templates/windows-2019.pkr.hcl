@@ -145,7 +145,7 @@ variable "virtual_network_subnet_name" {
 
 variable "vm_size" {
   type    = string
-  default = "Standard_F8s_v2"
+  default = "Standard_D2s_v4"
 }
 
 source "azure-arm" "image" {
@@ -176,6 +176,11 @@ source "azure-arm" "image" {
   winrm_insecure                         = "true"
   winrm_use_ssl                          = "true"
   winrm_username                         = "packer"
+  
+  spot {
+    max_price = "100"
+    eviction_policy = "Deallocate"
+  }
 
   dynamic "azure_tag" {
     for_each = var.azure_tags

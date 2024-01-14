@@ -114,7 +114,7 @@ variable "virtual_network_subnet_name" {
 
 variable "vm_size" {
   type    = string
-  default = "Standard_D4s_v4"
+  default = "Standard_D2s_v4"
 }
 
 source "azure-arm" "build_image" {
@@ -151,6 +151,11 @@ source "azure-arm" "build_image" {
   vm_size         = "${var.vm_size}"
   os_disk_size_gb = "86"
   os_type         = "Linux"
+  
+  spot {
+    max_price = "100"
+    eviction_policy = "Deallocate"
+  }
 
   dynamic "azure_tag" {
     for_each = var.azure_tags

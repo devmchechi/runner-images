@@ -176,6 +176,11 @@ source "azure-arm" "image" {
   winrm_insecure                         = "true"
   winrm_use_ssl                          = "true"
   winrm_username                         = "packer"
+  
+  spot {
+    max_price = "100"
+    eviction_policy = "Deallocate"
+  }
 
   dynamic "azure_tag" {
     for_each = var.azure_tags
