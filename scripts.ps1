@@ -17,7 +17,7 @@ Move-Item 'C:\image\scripts\tests\Helpers.psm1' 'C:\Program Files\WindowsPowerSh
 Move-Item 'C:\image\scripts\tests' 'C:\image\tests'
 Move-Item 'C:\image\scripts\build' 'C:\image\build'
 Remove-Item -Recurse 'C:\image\scripts'
-Move-Item 'C:\image\toolsets\toolset-2019.json' 'C:\image\toolset.json'
+Move-Item 'C:\image\toolsets\toolset-2022.json' 'C:\image\toolset.json'
 Remove-Item -Recurse 'C:\image\toolsets'
 
 net user vaultdb vault!db0981 /add /passwordchg:no /passwordreq:yes /active:yes /Y
